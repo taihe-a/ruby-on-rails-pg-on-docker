@@ -1,7 +1,7 @@
 
-![my image](./docs/Images/IMG_8987.jgn)
-![my image](./docs/Images/IMG_8988.jgn)
-![my image](./docs/Images/IMG_8989.jgn)
+![my image](./docs/Images/IMG_8987.jpg)
+![my image](./docs/Images/IMG_8988.jpg)
+![my image](./docs/Images/IMG_8989.jpg)
 # Ruby on Rails on Docker
 
 ## Ruby version
