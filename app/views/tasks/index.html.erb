@@ -1,0 +1,29 @@
+<div class="task_wrapper">
+<div class="w-25" ><%= flash[:notice]%></div>
+<%= link_to "新規登録", new_task_path, class:"btn btn-light"%>
+
+<div class="d-flex justify-content-around">
+ <div class="task_notstart task_wrap">
+    <h2 class="text-center h4">未着手ゾーン</h2>
+    <% @task.each do |tasks| %>
+    <%= link_to(task_path(tasks.id), class: 'list-content') do %>
+    <div class="task_content mx-auto">
+        <%= tasks.name %><br>
+        <%= tasks.details %><br>
+            </div>
+                <% end %>
+    <% end %>
+    </div>
+        <div class="task_inP task_wrap">
+    <h2 class="text-center h4">
+    進行中
+    </h2>
+    </div>
+
+    <div class="task_done task_wrap">
+    <h2 class="text-center h4">
+    完了
+    </h2>
+    </div>
+    </div>
+</div>

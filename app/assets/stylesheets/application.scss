@@ -10,6 +10,29 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+@import "bootstrap";
+
+.task_wrapper{
+    width:100%;
+    background-color:rgb(39, 123, 192);
+}
+.task_wrap{
+    min-height: 100vh;
+    background-color:gainsboro ;
+    width: 24%;
+    margin-top: 5%;
+}
+h2{
+    margin-top:20px;
+}
+.task_content{
+    width:80%;
+    background-color:#ffffff;
+    height:80px;
+    margin-bottom:20px;
+}
+.detail{
+    background-color: black;
+    height:100vh;
+}
