@@ -28,6 +28,9 @@ module App
     # the framework and any gems in your application.
 
     # Don't generate system test files.
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
     config.generators.system_tests = nil
   end
 end
