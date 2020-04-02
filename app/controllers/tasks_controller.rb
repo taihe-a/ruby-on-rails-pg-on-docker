@@ -22,9 +22,13 @@ class TasksController < ApplicationController
   end
   def create
     @task = Task.new(task_params)
-    @task.save
-    redirect_to "/" ,notice:"タスク#{@task.name}を登録しました"
-  end
+    if @task.save
+      redirect_to "/" ,notice:"タスク#{@task.name}を登録しました"
+    else
+      flash.now[:notice] = '10文字以上入力してください'
+      render :new
+    end
+      end
 
   def destroy
     @task = Task.find(params[:id])
