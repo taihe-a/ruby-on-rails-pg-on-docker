@@ -8,6 +8,10 @@
             <th>内容</th>
             <td><%= @task.detail %></td>
         </tr>
+        <tr>
+            <th>期限</th>
+            <td><%= @task.deadline %></td>
+        </tr>
   </tbody>  
 </table>
 <%= link_to'編集',edit_task_path,class:"btn btn-white"%>

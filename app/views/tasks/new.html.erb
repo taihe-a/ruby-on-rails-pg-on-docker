@@ -1,7 +1,7 @@
-<%= form_for @task do |f| %>
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
+<%= form_for @task do |f| %>
 <p>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -9,6 +9,10 @@
   <p>
   <%= f.label :detail %>
   <%= f.text_area :detail %>
+  </p>
+  <p>
+  <%= f.label :deadline %>
+  <%= f.date_select :deadline %>
   </p>
   <%= f.submit class:'btn btn-primary'%>
 <% end %>

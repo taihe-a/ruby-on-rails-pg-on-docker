@@ -35,10 +35,11 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to "/" ,notice:"タスク#{@task.name}を削除しました"
   end
+
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail)
+    params.require(:task).permit(:name, :detail, :deadline)
   end
   
 end
