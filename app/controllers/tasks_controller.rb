@@ -28,7 +28,7 @@ class TasksController < ApplicationController
       flash.now[:notice] = '10文字以上入力してください'
       render :new
     end
-      end
+  end
 
   def destroy
     @task = Task.find(params[:id])
