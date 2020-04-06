@@ -10,6 +10,15 @@
   <%= f.label :detail %>
   <%= f.text_area :detail %>
   </p>
+  <p class="field">
+    <%= f.label :progress %><br />
+    <%= f.label :WAITING %>
+    <%= f.radio_button :progress, :WAITING %>
+    <%= f.label :WORKING %>
+    <%= f.radio_button :progress, :WORKING %>
+    <%= f.label :COMPLETED %>
+    <%= f.radio_button :progress, :COMPLETED %>
+  </p>
   <%= f.submit class:'btn btn-primary'%>
 <% end %>
 <%= link_to "戻る", tasks_path %>
