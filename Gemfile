@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rails-i18n'
+gem 'enum_help'
 gem 'factory_bot'
 
 group :development, :test do
