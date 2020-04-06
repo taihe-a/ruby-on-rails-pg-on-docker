@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-    let(:task){ FactoryBot.build(:task) }
+    let(:fixed_task){ FactoryBot.build(:fixed_task) }
 
     it "factoryでデータが作られること" do
         task_instance = Task.new(
-                name: "hoge",
-                detail: "foobarcontents",
+                id: 2,
+                name: "勉強",
+                detail: "タスクの説明文ですテスト",
+                deadline: '2020-04-04',
             )
-        expect(task) .to eq　task_instance
+        expect(fixed_task) .to eq task_instance
     end
 end
