@@ -1,7 +1,0 @@
-ja:
-  enums:
-    task:  タスク
-      status: progress
-        WAITING: "未着手"  
-        WORKING: "着手"
-        COMPLETED: "完了"
