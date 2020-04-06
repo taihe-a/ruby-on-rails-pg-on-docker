@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env == "development" || "test"
-    (1..10).each do |i|
+    (1..200).each do |i|
     Task.create(
         name: "タスク#{i}", 
         detail: "タスク詳細表示タスク詳細表示#{i}", 
