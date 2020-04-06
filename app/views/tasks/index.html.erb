@@ -3,6 +3,21 @@
 <div class="w-25" ><%= flash[:notice]%></div>
 <%= link_to "新規登録", new_task_path, class:"btn btn-light"%>
 
+<div class="search-form">
+        <%= form_with(scope: :search, url: search_tasks_path, method: :get, local: true) do |f| %>
+    <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :progress %>
+        <%= f.select :progress, Task.progresses.keys.map {|k| [I18n.t("enums.task.progress.#{k}"), k]}, { include_blank: true} %>
+    </div>
+    <div class="actions">
+        <%= f.submit :search%>
+    </div>
+    <% end %>
+</div>
 <div class="d-flex justify-content-around">
  <div class="task_notstart task_wrap">
     <h2 class="text-center h4">未着手ゾーン</h2>

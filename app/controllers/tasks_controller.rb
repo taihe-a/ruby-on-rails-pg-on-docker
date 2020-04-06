@@ -40,6 +40,12 @@ class TasksController < ApplicationController
     redirect_to "/" ,notice:"タスク#{@task.name}を削除しました"
   end
 
+  def search
+    @task = Task.search(params[:search])
+    render 'index'
+  end
+  
+
   private
 
   def task_params
