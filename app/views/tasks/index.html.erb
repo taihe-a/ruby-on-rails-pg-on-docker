@@ -7,8 +7,8 @@
  <div class="task_notstart task_wrap">
     <h2 class="text-center h4">未着手ゾーン</h2>
     <div class="text-center m-2">
-    <%= link_to "昇順aa", tasks_path(direction:'ASC'), class:"btn btn-light"%>
-    <%= link_to "降順vv", tasks_path(direction:'DESC'), class:"btn btn-light"%>
+    <%= link_to "昇順", tasks_path(direction:'ASC'), class:"btn btn-light"%>
+    <%= link_to "降順", tasks_path(direction:'DESC'), class:"btn btn-light"%>
     </div>
     <% @task.each do |tasks| %>
     <%= link_to(task_path(tasks.id), class: 'list-content') do %>

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-    let(:fixed_task){ FactoryBot.build(:fixed_task) }
+    let(:fixed_task){ FactoryBot.create(:fixed_task) }
 
     it "factoryでデータが作られること" do
         task_instance = Task.new(
