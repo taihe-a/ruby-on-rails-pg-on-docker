@@ -1,4 +1,5 @@
-<table>
+<div class="container">
+<table class="table">
   <tbody>
         <tr>
             <th>タイトル</th>
@@ -8,7 +9,12 @@
             <th>内容</th>
             <td><%= @task.detail %></td>
         </tr>
+        <tr>
+            <th>期限</th>
+            <td><%= @task.deadline %></td>
+        </tr>
   </tbody>  
 </table>
 <%= link_to'編集',edit_task_path,class:"btn btn-white"%>
 <%= link_to'削除',task_path(@task.id),method: :delete,data:{confirm: "本当に削除しますか？"},class:"btn btn-danger"%>
+</div>
