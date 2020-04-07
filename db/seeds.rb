@@ -10,9 +10,9 @@
 # if Rails.env == "development"
 #     (1..200).each do |i|
 #     Task.create(
-#         name: "タスク#{i}", 
-#         detail: "タスク詳細表示タスク詳細表示#{i}", 
-#         deadline: Faker::Date.between(from: 1.month.ago, to: Date.today),
+#         name: "タスク#{i}",
+#         detail: "タスク詳細表示タスク詳細表示#{i}",
+#         deadline: Faker::Date.between(from: 1.month.ago, to: Time.zone.today),
 #         progress: Faker::Number.between(from: 1, to: 3)
 #     )
 #     end
