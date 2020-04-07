@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   end
 
   def search
-    @task = Task.search(params[:search])
+    @task = Task.search(params[:search]).page(params[:page])
     render 'index'
   end
   
