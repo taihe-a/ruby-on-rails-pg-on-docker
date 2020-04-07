@@ -9,17 +9,15 @@ RSpec.describe TasksController, type: :request do
     describe "GET #index" do
         context "when params_direction is DESC" do
             it "データが降順で返されること" do
-                skip
                 get tasks_url, params: { direction: "DESC" }
-                expect(response.map(&:id)).to eq [2,1]
+                expect(Task.order(deadline: "DESC").map(&:id)).to eq [2,1]
             end
         end
 
         context "when params_direction is other than DESC" do
             it "データが昇順で返されること" do
-                skip
                 get tasks_url, params: { direction: "ASC" }
-                expect(Task.map(&:id)).to eq [1,2]
+                expect(Task.order(deadline: "ASC").map(&:id)).to eq [1,2]
             end
         end
     end
