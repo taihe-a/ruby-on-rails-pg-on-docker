@@ -1,36 +1,53 @@
-<div class="bg-primary">
-<div class="container bg-primary">
-<div class="w-25" ><%= flash[:notice]%></div>
-<%= link_to "新規登録", new_task_path, class:"btn btn-light"%>
+<div class="container">
+<div class="d-flex align-items-center">
+<h1>タスク一覧</h1>
+<div class="ml-auto boards__linkBox">
+    <%= form_with(scope: :search, url: search_tasks_path, method: :get, local: true) do |f| %>
+        <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </div>
+        <div class="field">
+            <%= f.label :progress %>
+            <%= f.select :progress, Task.progresses.keys.map {|k| [I18n.t("enums.task.progress.#{k}"), k]}, { include_blank: true} %>
+        </div>
+        <div class="actions">
+            <%= f.submit :search%>
+        </div>
+        <% end %>
 
-<div class="d-flex justify-content-around">
- <div class="task_notstart task_wrap">
-    <h2 class="text-center h4">未着手ゾーン</h2>
+<%= link_to "新規登録", new_task_path, class:"btn btn-light "%>
     <div class="text-center m-2">
-    <%= link_to "昇順", tasks_path(direction:'ASC'), class:"btn btn-light"%>
-    <%= link_to "降順", tasks_path(direction:'DESC'), class:"btn btn-light"%>
-    </div>
-    <% @task.each do |tasks| %>
-    <%= link_to(task_path(tasks.id), class: 'list-content') do %>
-    <div class="task_content mx-auto">
-        <%= tasks.name %><br>
-        <%= tasks.detail %><br>
-        <%= tasks.deadline %><br>
-            </div>
-                <% end %>
-    <% end %>
-    </div>
-        <div class="task_inP task_wrap">
-    <h2 class="text-center h4">
-    進行中
-    </h2>
-    </div>
-
-    <div class="task_done task_wrap">
-    <h2 class="text-center h4">
-    完了
-    </h2>
-    </div>
+    <%= link_to "昇順", tasks_path(direction:'ASC'), class:"btn btn-success"%>
+    <%= link_to "降順", tasks_path(direction:'DESC'), class:"btn btn-info"%>
     </div>
 </div>
+</div>
+<% if flash[:notice] %>
+<div class="alert alert-danger"><%= flash[:notice] %></div>
+<% end %>
+    <table class="table table-hover boards__table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>タイトル</th>
+                <th>詳細</th>
+                <th>期限</th>
+                <th>進捗</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @task.each do |tasks| %>
+                <%= link_to(task_path(tasks.id)) do %>
+                    <tr>
+                        <td><%= tasks.id %></td>
+                        <td><%= tasks.name %></td>
+                        <td><%= tasks.detail %></td>
+                        <td><%= tasks.deadline %></td>
+                        <td><%= tasks.progress_i18n %></td>
+                    </tr>
+                <% end %>
+            <% end %>
+        </tbody>
+    </table>
 </div>

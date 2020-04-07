@@ -12,27 +12,20 @@
  *
  */
 @import "bootstrap";
-
-.task_wrapper{
-    width:100%;
-    background-color:rgb(39, 123, 192);
-}
-.task_wrap{
-    min-height: 100vh;
-    background-color:gainsboro ;
-    width: 24%;
-    margin-top: 5%;
-}
-h2{
-    margin-top:20px;
-}
-.task_content{
-    width:80%;
-    background-color:#ffffff;
-    height:80px;
-    margin-bottom:20px;
-}
-.detail{
-    background-color: black;
-    height:100vh;
-}
+.boards__table {
+    tr:hover {
+    cursor: pointer;
+    }
+    }
+    .boards__linkBox {
+    a {
+    margin: 0 8px;
+    }
+    }
+    .boards__searchForm {
+    display: inline-block;
+    }
+    .boards__select {
+    display: inline-block;
+    width: auto;
+    }

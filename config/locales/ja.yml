@@ -7,6 +7,15 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      task: タスク
+    attributes:
+      task:
+        id: ID
+        name: タスク名
+        detail: 詳細
+        deadline: 期限
+        progress: 進捗
   date:
     abbr_day_names:
     - 日
@@ -205,3 +214,9 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  enums:
+    task:
+      progress:
+        WAITING: 未着手
+        WORKING: 着手
+        COMPLETED: 完了
