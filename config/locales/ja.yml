@@ -221,7 +221,6 @@ ja:
         WAITING: 未着手
         WORKING: 着手
         COMPLETED: 完了
-    task:
       priority:
         HIGH: 高
         MIDDLE: 中

@@ -11,6 +11,10 @@
             <%= f.label :progress %>
             <%= f.select :progress, Task.progresses.keys.map {|k| [I18n.t("enums.task.progress.#{k}"), k]}, { include_blank: true} %>
         </div>
+        <div class="field">
+            <%= f.label :priority %>
+            <%= f.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}, { include_blank: true} %>
+        </div>
         <div class="actions">
             <%= f.submit :search%>
         </div>
