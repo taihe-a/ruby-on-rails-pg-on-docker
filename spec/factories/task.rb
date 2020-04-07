@@ -14,7 +14,7 @@ FactoryBot.define do
         detail {"タスクの説明文ですタスクの説明文です"}
         deadline {Date.tomorrow}
         progress {2}
-        priority {1}
+        priority {2}
     end
 
     factory :fixed_task, class: Task do

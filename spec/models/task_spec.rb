@@ -26,7 +26,7 @@ RSpec.describe Task, type: :model do
         describe "search" do
             let(:task1) {FactoryBot.create(:task1)} 
             let(:task2) {FactoryBot.create(:task2)}
-            let(:params) { {"name" => name, "progress" => progress } } 
+            let(:params) { {"name" => name, "progress" => progress, "priority" => priority } } 
             context "when params is nil" do
                 context "nilで検索した場合全てのデータを返す" do
                     it "return task1" do
@@ -38,7 +38,8 @@ RSpec.describe Task, type: :model do
             context "when params exist" do
                 context "トレーニングで検索して該当の値を返す" do
                     let(:name) { "トレーニング" } 
-                    let(:progress) { "" } 
+                    let(:progress) { "" }
+                    let(:priority) { "" } 
                     it "return task1" do
                         expect(Task.search(params)).to include(task1)
                     end
@@ -47,8 +48,18 @@ RSpec.describe Task, type: :model do
                 context "未着手で検索して値を返す" do
                     let(:name) { "" } 
                     let(:progress) { "WORKING" } 
+                    let(:priority) { "" } 
                     it "return task2" do
                         expect(Task.search(params)).to include(task2)
+                    end
+                end
+
+                context "優先度HIGHで検索して値を返す" do
+                    let(:name) { "" } 
+                    let(:progress) { "" } 
+                    let(:priority) { "HIGH" } 
+                    it "return task1" do
+                        expect(Task.search(params)).to include(task1)
                     end
                 end
             end
