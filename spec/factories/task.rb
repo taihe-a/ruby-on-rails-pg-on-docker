@@ -16,7 +16,7 @@ FactoryBot.define do
     end
 
     factory :fixed_task, class: Task do
-        id { 2 }
+        id { 3 }
         name { '勉強' }
         detail { 'タスクの説明文ですテスト' }
         deadline { Date.today }
