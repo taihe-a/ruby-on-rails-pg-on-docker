@@ -39,11 +39,11 @@
                 <th>期限</th>
                 <th>進捗</th>
                 <th>優先度</th>
+                <th>詳細</th>
             </tr>
         </thead>
         <tbody>
             <% @task.each do |tasks| %>
-                <%= link_to(task_path(tasks.id)) do %>
                     <tr>
                         <td><%= tasks.id %></td>
                         <td><%= tasks.name %></td>
@@ -51,9 +51,13 @@
                         <td><%= tasks.deadline %></td>
                         <td><%= tasks.progress_i18n %></td>
                         <td><%= tasks.priority_i18n %></td>
+                        <td><%= link_to "詳細", task_path(tasks.id), class:"btn btn-success"%></td>
                     </tr>
-                <% end %>
             <% end %>
         </tbody>
     </table>
+<br>
+<%= paginate @task %>
+<br>
+<%= link_to 'New Data Page', new_task_path %>
 </div>

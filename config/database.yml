@@ -64,6 +64,9 @@ test:
   password: <%= ENV['PG_PASSWORD'] %>
   host: db
   database: app_test
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+  host: db
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
