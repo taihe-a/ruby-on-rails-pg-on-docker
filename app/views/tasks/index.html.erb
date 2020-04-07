@@ -34,6 +34,7 @@
                 <th>詳細</th>
                 <th>期限</th>
                 <th>進捗</th>
+                <th>優先度</th>
             </tr>
         </thead>
         <tbody>
@@ -45,6 +46,7 @@
                         <td><%= tasks.detail %></td>
                         <td><%= tasks.deadline %></td>
                         <td><%= tasks.progress_i18n %></td>
+                        <td><%= tasks.priority_i18n %></td>
                     </tr>
                 <% end %>
             <% end %>

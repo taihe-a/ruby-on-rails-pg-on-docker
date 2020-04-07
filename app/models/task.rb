@@ -3,6 +3,7 @@ class Task < ApplicationRecord
     validates :detail, length: { minimum: 10 }
 
     enum progress: {WAITING: 1, WORKING: 2, COMPLETED: 3}
+    enum priority: {HIGH: 1,　MIDDLE:2, LOW: 3 }
 
     scope :search, -> (search) do
         
