@@ -11,6 +11,10 @@
             <%= f.label :progress %>
             <%= f.select :progress, Task.progresses.keys.map {|k| [I18n.t("enums.task.progress.#{k}"), k]}, { include_blank: true} %>
         </div>
+        <div class="field">
+            <%= f.label :priority %>
+            <%= f.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}, { include_blank: true} %>
+        </div>
         <div class="actions">
             <%= f.submit :search%>
         </div>
@@ -34,6 +38,7 @@
                 <th>詳細</th>
                 <th>期限</th>
                 <th>進捗</th>
+                <th>優先度</th>
                 <th>詳細</th>
             </tr>
         </thead>
@@ -45,6 +50,7 @@
                         <td><%= tasks.detail %></td>
                         <td><%= tasks.deadline %></td>
                         <td><%= tasks.progress_i18n %></td>
+                        <td><%= tasks.priority_i18n %></td>
                         <td><%= link_to "詳細", task_path(tasks.id), class:"btn btn-success"%></td>
                     </tr>
             <% end %>
