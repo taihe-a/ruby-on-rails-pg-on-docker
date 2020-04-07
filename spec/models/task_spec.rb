@@ -5,6 +5,9 @@ RSpec.describe Task, type: :model do
         let(:fixed_task) {FactoryBot.create(:fixed_task) } 
 
         describe "valid" do
+            
+            binding.pry
+            
             it "有効なデータであること" do
                 expect(fixed_task).to be_valid
             end
