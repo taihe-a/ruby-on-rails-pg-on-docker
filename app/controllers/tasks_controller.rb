@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   def index
     if params[:direction] == 'DESC'
-      @task = Task.order(deadline: "DESC")
+      @task = Task.page(params[:page]).per(15).order(deadline: "DESC")
     else
-      @task = Task.order(deadline: "ASC")
+      @task = Task.page(params[:page]).per(15).order(deadline: "ASC")
     end
   end
 
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   end
 
   def search
-    @task = Task.search(params[:search])
+    @task = Task.search(params[:search]).page(params[:page])
     render 'index'
   end
   
