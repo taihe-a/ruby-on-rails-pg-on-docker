@@ -26,17 +26,30 @@ RSpec.describe Task, type: :model do
         describe "search" do
             let(:task1) {FactoryBot.create(:task1)} 
             let(:task2) {FactoryBot.create(:task2)}
-
-            
-            describe "トレーニングで検索して該当の値を返す" do
-                it "return task1" do
-                    expect(Task.name_like("トレーニング")).to include(task1)
+            let(:params) { {"name" => name, "progress" => progress } } 
+            context "when params is nil" do
+                context "nilで検索した場合全てのデータを返す" do
+                    it "return task1" do
+                        expect(Task.search(nil)).to include(task1,task2)
+                    end
                 end
             end
 
-            describe "未着手で検索して値を返す" do
-                it "return task2" do
-                    expect(Task.progress_is("WORKING")).to include(task2)
+            context "when params exist" do
+                context "トレーニングで検索して該当の値を返す" do
+                    let(:name) { "トレーニング" } 
+                    let(:progress) { "" } 
+                    it "return task1" do
+                        expect(Task.search(params)).to include(task1)
+                    end
+                end
+    
+                context "未着手で検索して値を返す" do
+                    let(:name) { "" } 
+                    let(:progress) { "WORKING" } 
+                    it "return task2" do
+                        expect(Task.search(params)).to include(task2)
+                    end
                 end
             end
         end
