@@ -9,5 +9,3 @@ def tasks
         )
     end
 end
-
-tasks
