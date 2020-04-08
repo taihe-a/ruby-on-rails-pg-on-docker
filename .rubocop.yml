@@ -1,4 +1,8 @@
+require: 
+  - rubocop-rails
+
 AllCops:
+  TargetRubyVersion: 2.6
   Exclude:
     - "tmp/**/*"
     - "config/initializers/*"
@@ -7,10 +11,9 @@ AllCops:
     - "node_modules/**/*"
     - "db/migrate/*.rb"
     - "bin/*"
+    - "lib/*"
+    - "lib/**/*"
   DisplayCopNames: true
-
-Rails:
-  Enabled: true
 
 Style/AndOr:
   EnforcedStyle: conditionals
@@ -32,6 +35,9 @@ Bundler/OrderedGems:
 
 Lint/ShadowedException:
   Enabled: false
-        
+
 Metrics/LineLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
