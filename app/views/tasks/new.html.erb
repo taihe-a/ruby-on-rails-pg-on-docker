@@ -13,13 +13,22 @@
   <%= f.text_area :detail %>
   </div>
   <div class="field">
-    <%= f.label :progress %><br />
+    <%= f.label :progress %>
     <%= f.label "未着手" %>
     <%= f.radio_button :progress, :WAITING %>
     <%= f.label "着手" %>
     <%= f.radio_button :progress, :WORKING %>
     <%= f.label "完了" %>
     <%= f.radio_button :progress, :COMPLETED %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %>
+    <%= f.label "高" %>
+    <%= f.radio_button :priority, :HIGH %>
+    <%= f.label "中" %>
+    <%= f.radio_button :priority, :MIDDLE %>
+    <%= f.label "低" %>
+    <%= f.radio_button :priority, :LOW %>
   </div>
   <div class="form-group">
     <%= f.label :deadline %>

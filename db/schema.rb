@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_095500) do
     t.date "deadline"
     t.integer "progress"
     t.integer "user_id"
+    t.integer "priority"
     t.index ["name"], name: "index_tasks_on_name"
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -38,17 +40,17 @@ gem 'rails-i18n'
 gem 'enum_help'
 gem 'factory_bot'
 gem 'kaminari'
-gem 'rubocop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'hirb'         # モデルの出力結果を表形式で表示するGem
-  gem 'hirb-unicode' # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
+  gem 'hirb' # モデルの出力結果を表形式で表示するGem
   gem 'rspec-rails'
   gem 'faker'
+  gem 'rubocop', '~> 0.81.0'
+  gem 'rubocop-rails'
 end
 
 group :development do
@@ -63,11 +65,10 @@ end
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
-  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # bootstrap
 gem 'bootstrap'

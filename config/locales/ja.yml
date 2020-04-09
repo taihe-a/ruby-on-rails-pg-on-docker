@@ -16,6 +16,7 @@ ja:
         detail: 詳細
         deadline: 期限
         progress: 進捗
+        priority: 優先度
   date:
     abbr_day_names:
     - 日
@@ -220,3 +221,7 @@ ja:
         WAITING: 未着手
         WORKING: 着手
         COMPLETED: 完了
+      priority:
+        HIGH: 高
+        MIDDLE: 中
+        LOW: 低

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def tasks
   (1..100).each do |i|
     Task.create(
@@ -7,6 +9,7 @@ def tasks
       deadline: Faker::Date.between(from: Time.zone.today, to: 1.month.ago),
       progress: Faker::Number.between(from: 1, to: 3),
       user_id: Faker::Number.between(from: 1, to: 3),
+      priority: Faker::Number.between(from: 1, to: 3)
     )
   end
 end
