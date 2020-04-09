@@ -1,18 +1,22 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :task1, class: Task do
     id { 1 }
-    name { "トレーニング" }
-    detail { "タスクの説明文ですタスクの説明文です" }
+    name { 'トレーニング' }
+    detail { 'タスクの説明文ですタスクの説明文です' }
     deadline { Time.zone.today }
     progress { 1 }
+    priority { 1 }
   end
 
   factory :task2, class: Task do
     id { 2 }
-    name { "モブプロ" }
-    detail { "タスクの説明文ですタスクの説明文です" }
+    name { 'モブプロ' }
+    detail { 'タスクの説明文ですタスクの説明文です' }
     deadline { Date.tomorrow }
     progress { 2 }
+    priority { 2 }
   end
 
   factory :fixed_task, class: Task do
@@ -21,5 +25,6 @@ FactoryBot.define do
     detail { 'タスクの説明文ですテスト' }
     deadline { Time.zone.today }
     progress { 1 }
+    priority { 1 }
   end
 end

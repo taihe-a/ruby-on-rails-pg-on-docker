@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   def index
     @task = if params[:direction] == 'DESC'
@@ -49,6 +51,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :deadline, :progress)
+    params.require(:task).permit(:name, :detail, :deadline, :progress, :priority)
   end
 end
