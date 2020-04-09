@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   before do
-    FactoryBot.create(:user1)
-    FactoryBot.create(:user2)
+    FactoryBot.create_list(:user, 2)
   end
   
   describe 'validation' do

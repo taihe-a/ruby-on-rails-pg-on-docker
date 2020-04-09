@@ -4,8 +4,7 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :request do
   before do
-    FactoryBot.create(:user1)
-    FactoryBot.create(:user2)
+    FactoryBot.create_list(:user, 2)
     FactoryBot.create(:task1)
     FactoryBot.create(:task2)
   end

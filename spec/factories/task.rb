@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :user1, class: User do
-    id { 1 }
-    name { 'user1' }
-    email { Faker::Internet.free_email }
-    password_digest { 'user1' }
-  end
+  sequence(:u_id, 1)
+  sequence(:user_name, "name_1")
+  sequence(:user_pass, "pass_1")
 
-  factory :user2, class: User do
-    id { 2 }
-    name { 'user2' }
+  factory :user, class: User do
+    id { generate :u_id }
+    name { generate :user_name }
     email { Faker::Internet.free_email }
-    password_digest { 'user2' }
+    password_digest { generate :user_pass }
   end
 
   factory :task1, class: Task do
