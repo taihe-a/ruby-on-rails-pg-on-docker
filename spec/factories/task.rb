@@ -8,6 +8,7 @@ FactoryBot.define do
     deadline { Time.zone.today }
     progress { 1 }
     priority { 1 }
+    user_id { 1 }
   end
 
   factory :task2, class: Task do
@@ -17,6 +18,7 @@ FactoryBot.define do
     deadline { Date.tomorrow }
     progress { 2 }
     priority { 2 }
+    user_id { 2 }
   end
 
   factory :fixed_task, class: Task do
@@ -26,5 +28,6 @@ FactoryBot.define do
     deadline { Time.zone.today }
     progress { 1 }
     priority { 1 }
+    user_id { 2 }
   end
 end
