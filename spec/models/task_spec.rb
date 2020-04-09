@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
+  before do
+    FactoryBot.create(:user1)
+    FactoryBot.create(:user2)
+  end
+  
   describe 'validation' do
     let(:fixed_task) { FactoryBot.create(:fixed_task) }
 
