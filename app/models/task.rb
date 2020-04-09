@@ -1,5 +1,4 @@
 class Task < ApplicationRecord
-
   validates :name, presence: true
   validates :detail, length: { minimum: 10 }
 
@@ -10,11 +9,11 @@ class Task < ApplicationRecord
     return if search.blank?
 
     name_like(search[:name])
-        .progress_is(search[:progress])
-            .priority_is(search[:priority])}
-  end
+      .progress_is(search[:progress])
+        .priority_is(search[:priority])
+  }
 
-    scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present?} 
-    scope :progress_is, -> (progress) { where(progress: progress) if progress.present?}
-    scope :priority_is, -> (priority) { where(priority: priority) if priority.present?}
+  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :progress_is, -> (progress) { where(progress: progress) if progress.present? }
+  scope :priority_is, -> (priority) { where(priority: priority) if priority.present?}
 end
