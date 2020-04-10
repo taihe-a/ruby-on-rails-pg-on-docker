@@ -13,7 +13,7 @@ if Rails.env.development?
     User.create(
       name: "user#{i}",
       email: Faker::Internet.email,
-      password_digest: "pass#{i}"
+      password: "pass#{i}"
     )
   end
 end

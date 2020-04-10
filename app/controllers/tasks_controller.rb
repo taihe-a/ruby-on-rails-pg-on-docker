@@ -3,9 +3,9 @@
 class TasksController < ApplicationController
   def index
     @task = if params[:direction] == 'DESC'
-              Task.page(params[:page]).per(15).order(deadline: 'DESC')
+              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'DESC')
             else
-              Task.page(params[:page]).per(15).order(deadline: 'ASC')
+              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'ASC')
             end
   end
 
@@ -28,11 +28,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params.merge(user_id: current_user.id))
     if @task.save
       redirect_to '/', notice: "タスク#{@task.name}を登録しました"
     else
-      flash.now[:notice] = '10文字以上入力してください'
+      flash.now[:notice] = 'エラーが発生しました'
       render :new
     end
   end

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe TasksController, type: :request do
   before do
     FactoryBot.create(:user) do |user|
-      FactoryBot.create_list(:task,2, user: user)
+      FactoryBot.create_list(:task, 2, user: user)
     end
   end
 

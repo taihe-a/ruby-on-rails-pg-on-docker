@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-  
   describe 'validation' do
     let(:task) { FactoryBot.create(:task) }
 
@@ -16,8 +15,8 @@ RSpec.describe Task, type: :model do
         task.name = ''
         expect(task).to be_invalid
       end
-    
-      it 'detailが10文字以下の場合' do 
+
+      it 'detailが10文字以下の場合' do
         task.detail = 'アイウエオ'
         expect(task).to be_invalid
       end
@@ -26,7 +25,7 @@ RSpec.describe Task, type: :model do
 
   describe 'search' do
     let(:task1) { FactoryBot.create(:task, name: 'トレーニング1') }
-    let(:task2) { FactoryBot.create(:task, name: 'トレーニング2' , progress: 1, priority:1) }
+    let(:task2) { FactoryBot.create(:task, name: 'トレーニング2', progress: 1, priority: 1) }
     let(:params) { { 'name' => name, 'progress' => progress, 'priority' => priority } }
 
     context 'when params is nil' do
