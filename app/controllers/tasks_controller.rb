@@ -28,9 +28,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user ?  Task.new(task_params.merge(user_id: current_user.id)) : nil
-    if @task
-      @task.save
+    @task = Task.new(task_params.merge(user_id: current_user.id))
+    if @task.save
       redirect_to '/', notice: "タスク#{@task.name}を登録しました"
     else
       flash.now[:notice] = 'エラーが発生しました'
