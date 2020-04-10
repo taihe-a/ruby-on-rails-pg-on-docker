@@ -1,24 +1,19 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  sequence(:uer_id, 1)
-  sequence(:task_id, 1)
-  sequence(:user_name, "name_1")
-  sequence(:user_pass, "pass_1")
-  sequence(:date, Time.zone.today)
 
   factory :user, class: User do
-    id { generate :uer_id }
-    name { generate :user_name }
+    sequence(:id) { |n| n }
+    sequence(:name) { |n| "name_#{n}" }
     email { Faker::Internet.free_email }
-    password_digest { generate :user_pass }
+    sequence(:password_digest) { |n| "pass_#{n}" }
   end
 
   factory :task do
-    id { generate :task_id }
+    sequence(:id) { |n| n }
     name { 'トレーニング' }
     detail { 'タスクの説明文ですタスクの説明文です' }
-    deadline { generate :date  }
+    sequence(:deadline) { |n| "#{Time.zone.today + n.days}"}
     progress { 1 }
     priority { 1 }
     user
