@@ -1,44 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
+  
   describe 'validation' do
-    let(:fixed_task) { FactoryBot.create(:fixed_task) }
+    let(:task) { FactoryBot.create(:task) }
 
     describe 'valid' do
       it '有効なデータであること' do
-        expect(fixed_task).to be_valid
+        expect(task).to be_valid
       end
     end
 
     describe 'invalid' do
-      it 'nameが空の場合' do
-        fixed_task.name = ''
-        expect(fixed_task).to be_invalid
+      it 'nameバリデーション' do
+        task.name = ''
+        expect(task).to be_invalid
       end
-
-      it 'detailが10文字以下の場合' do
-        fixed_task.detail = 'アイウエオ'
-        expect(fixed_task).to be_invalid
-      end
-    end
-  end
-
-  describe 'search' do
-    let(:task1) { FactoryBot.create(:task1) }
-    let(:task2) { FactoryBot.create(:task2) }
-    let(:params) { { 'name' => name, 'progress' => progress } }
-    context 'when params is nil' do
-      context 'nilで検索した場合全てのデータを返す' do
-        it 'return task1' do
-          expect(Task.search(nil)).to include(task1, task2)
-        end
+    
+      it 'detailが10文字以下の場合' do 
+        task.detail = 'アイウエオ'
+        expect(task).to be_invalid
       end
     end
   end
 
   describe 'search' do
-    let(:task1) { FactoryBot.create(:task1) }
-    let(:task2) { FactoryBot.create(:task2) }
+    let(:task1) { FactoryBot.create(:task, name: 'トレーニング1') }
+    let(:task2) { FactoryBot.create(:task, name: 'トレーニング2' , progress: 1, priority:1) }
     let(:params) { { 'name' => name, 'progress' => progress, 'priority' => priority } }
 
     context 'when params is nil' do
@@ -51,7 +39,7 @@ RSpec.describe Task, type: :model do
 
     context 'when params exist' do
       context 'トレーニングで検索して該当の値を返す' do
-        let(:name) { 'トレーニング' }
+        let(:name) { 'トレーニング1' }
         let(:progress) { '' }
         let(:priority) { '' }
         it 'return task1' do
@@ -72,8 +60,8 @@ RSpec.describe Task, type: :model do
         let(:name) { '' }
         let(:progress) { '' }
         let(:priority) { 'HIGH' }
-        it 'return task1' do
-          expect(Task.search(params)).to include(task1)
+        it 'return task2' do
+          expect(Task.search(params)).to include(task2)
         end
       end
     end

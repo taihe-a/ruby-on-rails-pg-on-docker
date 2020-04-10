@@ -1,30 +1,21 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :task1, class: Task do
-    id { 1 }
+
+  factory :user, class: User do
+    sequence(:id) { |n| n }
+    sequence(:name) { |n| "name_#{n}" }
+    email { Faker::Internet.free_email }
+    sequence(:password_digest) { |n| "pass_#{n}" }
+  end
+
+  factory :task do
+    sequence(:id) { |n| n }
     name { 'トレーニング' }
     detail { 'タスクの説明文ですタスクの説明文です' }
-    deadline { Time.zone.today }
+    sequence(:deadline) { |n| "#{Time.zone.today + n.days}"}
     progress { 1 }
     priority { 1 }
-  end
-
-  factory :task2, class: Task do
-    id { 2 }
-    name { 'モブプロ' }
-    detail { 'タスクの説明文ですタスクの説明文です' }
-    deadline { Date.tomorrow }
-    progress { 2 }
-    priority { 2 }
-  end
-
-  factory :fixed_task, class: Task do
-    id { 3 }
-    name { '勉強' }
-    detail { 'タスクの説明文ですテスト' }
-    deadline { Time.zone.today }
-    progress { 1 }
-    priority { 1 }
+    user
   end
 end
