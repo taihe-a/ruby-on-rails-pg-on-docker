@@ -3,9 +3,9 @@
 class TasksController < ApplicationController
   def index
     @task = if params[:direction] == 'DESC'
-              Task.page(params[:page]).per(15).order(deadline: 'DESC')
+              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'DESC')
             else
-              Task.page(params[:page]).per(15).order(deadline: 'ASC')
+              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'ASC')
             end
   end
 
