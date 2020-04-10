@@ -28,11 +28,15 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    if @task.save
+    
+    binding.pry
+    
+    @task = session ?  Task.new(task_params.merge(user_id: session[:user_id])) : nil
+    if @task
+      @task.save
       redirect_to '/', notice: "タスク#{@task.name}を登録しました"
     else
-      flash.now[:notice] = '10文字以上入力してください'
+      flash.now[:notice] = 'エラーが発生しました'
       render :new
     end
   end
