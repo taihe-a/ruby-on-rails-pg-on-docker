@@ -28,10 +28,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    
-    binding.pry
-    
-    @task = session ?  Task.new(task_params.merge(user_id: session[:user_id])) : nil
+    @task = current_user ?  Task.new(task_params.merge(user_id: current_user.id)) : nil
     if @task
       @task.save
       redirect_to '/', notice: "タスク#{@task.name}を登録しました"
