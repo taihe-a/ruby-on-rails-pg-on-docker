@@ -1,0 +1,19 @@
+<%= form_with model: user do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'ユーザー名' %>
+    <%= f.text_field :name%>
+  </div>
+	<div class="form-group">
+		<%= f.label :email, 'メールアドレス'%>
+		<%= f.text_field :email %>
+  </div>
+	<div class="form-group">
+		<%= f.label :password, 'パスワード' %>
+		<%= f.password_field :password %>
+  </div>
+	<div>
+	<%= f.label :admin, '管理者権限' %>
+	<%= f.check_box :admin %>
+	</div>
+  <%= f.submit '保存', class: 'btn btn-primary' %>
+<% end %>
