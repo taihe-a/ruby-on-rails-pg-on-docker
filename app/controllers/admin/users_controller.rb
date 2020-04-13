@@ -2,14 +2,12 @@ class Admin::UsersController < ApplicationController
   before_action :set_target_user, only: %i[show edit update destroy]
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def new
     @user = User.new
   end
-
-  def edit; end
 
   def create
     @user = User.new(user_params)
@@ -19,8 +17,6 @@ class Admin::UsersController < ApplicationController
       render :new
     end
   end
-
-  def show; end
 
   def update
     @user.update!(user_params)
