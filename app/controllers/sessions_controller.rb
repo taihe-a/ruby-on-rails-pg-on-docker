@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
+      session[:name] = user.name
       redirect_to '/', notice: 'ログインしました'
     else
       render action: :new
