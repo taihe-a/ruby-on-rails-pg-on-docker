@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_target_user, only: %i[show edit update destroy]
 
   def index
-    @user = User.all
+    @user = User.all.includes(:tasks)
   end
 
   def new
