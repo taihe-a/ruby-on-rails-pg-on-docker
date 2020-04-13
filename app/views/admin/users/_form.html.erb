@@ -1,4 +1,8 @@
-<%= form_with model: user do |f| %>
+<div class="d-flex">
+<p>名前：<%= session[:name] %>　</p>
+<p>ID：<%= session[:user_id] %></p>
+  </div>
+<%= form_with model: user,scope: :post, url: admin_users_path do |f| %>
   <div class="form-group">
     <%= f.label :name, 'ユーザー名' %>
     <%= f.text_field :name%>
