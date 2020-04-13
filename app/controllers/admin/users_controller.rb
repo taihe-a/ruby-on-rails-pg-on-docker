@@ -1,5 +1,4 @@
 class Admin::UsersController < ApplicationController
-  skip_before_action :login_required
   before_action :set_target_user, only: %i[show edit update destroy]
 
   def index
