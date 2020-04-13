@@ -24,12 +24,12 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user.update!(user_params)
-    redirect_to admin_users_path, notice: "タスク#{@user.name}を変更しました"
+    redirect_to admin_users_path, notice: "#{@user.name}を変更しました"
   end
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path, notice: "タスク#{@user.name}を削除しました"
+    redirect_to admin_users_path, notice: "#{@user.name}を削除しました"
   end
 
   private
