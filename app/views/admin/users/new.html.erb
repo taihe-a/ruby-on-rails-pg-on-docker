@@ -5,5 +5,25 @@
 		<%= link_to '一覧', admin_users_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
-<%= render partial: 'form', locals: { user: @user } %>
+<p>ログインユーザ：<%= session[:name] %>　</p>
+<p>ログインユーザID：<%= session[:user_id] %></p>
+<%= form_with model:[:admin, @user], local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'ユーザー名' %>
+    <%= f.text_field :name%>
+  </div>
+	<div class="form-group">
+		<%= f.label :email, 'メールアドレス'%>
+		<%= f.text_field :email %>
+  </div>
+	<div class="form-group">
+		<%= f.label :password, 'パスワード' %>
+		<%= f.password_field :password %>
+  </div>
+	<div>
+	<%= f.label :admin, '管理者権限' %>
+	<%= f.check_box :admin %>
+	</div>
+  <%= f.submit '保存', class: 'btn btn-primary' %>
+<% end %>
 </div>
