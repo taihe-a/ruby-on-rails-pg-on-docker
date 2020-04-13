@@ -20,7 +20,9 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @user = User.includes(:tasks).find(params[:id])
+  end
 
   def update
     @user.update!(user_params)
