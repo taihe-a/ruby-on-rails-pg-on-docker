@@ -9,5 +9,9 @@
 		<%= link_to '一覧', admin_users_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
+        <tr>
+            <th>ユーザーID</th>
+            <td><%= @user.id %></td>
+        </tr>
 <%= render partial: 'form', locals: { user: @user } %>
 </div>
