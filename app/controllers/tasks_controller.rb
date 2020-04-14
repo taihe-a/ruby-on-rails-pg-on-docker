@@ -2,10 +2,13 @@
 
 class TasksController < ApplicationController
   def index
+    
+    binding.pry
+    
     @task = if params[:direction] == 'DESC'
-              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'DESC')
+              Task.page(params[:page]).per(15).where(user_id: current_user.id).order(deadline: 'DESC')
             else
-              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'ASC')
+              Task.page(params[:page]).per(15).where(user_id: current_user.id).order(deadline: 'ASC')
             end
   end
 
@@ -44,7 +47,7 @@ class TasksController < ApplicationController
   end
 
   def search
-    @task = Task.search(params[:search]).page(params[:page])
+    @task = Task.search(params[:search]).page(params[:page]).where(user_id: current_user.id)
     render 'index'
   end
 
