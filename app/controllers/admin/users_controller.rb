@@ -1,8 +1,9 @@
 class Admin::UsersController < ApplicationController
   before_action :set_target_user, only: %i[show edit update destroy]
+  before_action :is_admin_user
 
   def index
-    @user = User.all.includes(:tasks)
+    @users = User.all.includes(:tasks)
   end
 
   def new
@@ -42,5 +43,9 @@ class Admin::UsersController < ApplicationController
 
   def set_target_user
     @user = User.find(params[:id])
+  end
+
+  def is_admin_user
+    raise Forbidden unless current_user.admin?
   end
 end

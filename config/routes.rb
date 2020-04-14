@@ -13,4 +13,5 @@ Rails.application.routes.draw do
       get 'search' => 'tasks#search'
     end
   end
+  get '*anything' => 'errors#routing_error'
 end

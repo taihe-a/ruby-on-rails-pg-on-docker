@@ -26,14 +26,14 @@
             </tr>
         </thead>
         <tbody>
-            <% @user.each do |users| %>
+            <% @users.each do |user| %>
                     <tr>
-                        <td><%= users.id %></td>
-                        <td><%= users.name %></td>
-                        <td><%= users.email %></td>
-                        <td><%= users.admin %></td>
-                        <td><%= users.tasks.length %></td>
-                        <td><%= link_to "詳細", admin_user_path(users.id), class:"btn btn-success"%></td>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.admin %></td>
+                        <td><%= user.tasks.length %></td>
+                        <td><%= link_to "詳細", admin_user_path(user.id), class:"btn btn-success"%></td>
                     </tr>
             <% end %>
         </tbody>
