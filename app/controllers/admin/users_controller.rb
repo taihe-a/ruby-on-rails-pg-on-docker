@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_target_user, only: %i[show edit update destroy]
+  before_action :set_target_user, only: %i[edit update destroy]
 
   def index
     @users = User.preload(:tasks)
