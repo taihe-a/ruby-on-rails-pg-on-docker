@@ -5,26 +5,23 @@ module ErrorHandlers
   end
 
   included do
-    rescue_from Exception, with: :rescue500
-    rescue_from Forbidden, with: :rescue403
-    rescue_from ActionController::RoutingError, with: :rescue404
-    rescue_from ActiveRecord::RecordNotFound, with: :rescue404
+    rescue_from Exception, with: :internal_server_error
+    rescue_from Forbidden, with: :forbidden
+    rescue_from ActionController::RoutingError, with: :not_found
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
   end
 
   private
 
-  def rescue403(error)
-    @exception = error
-    render 'errors/403', status: :forbidden
+  def forbidden
+    render 'errors/forbidden', status: :forbidden
   end
 
-  def rescue404(error)
-    @exception = error
-    render 'errors/404', status: :not_found
+  def not_found
+    render 'errors/not_found', status: :not_found
   end
 
-  def rescue500(error)
-    @exception = error
-    render '/errors/500', status: :internal_server_error
+  def internal_server_error
+    render '/errors/internal_server_error', status: :internal_server_error
   end
 end
