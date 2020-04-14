@@ -29,8 +29,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path, notice: "#{@user.name}を削除しました"
+    if @user.destroy
+      redirect_to admin_users_path, notice: "#{@user.name}を削除しました"
+    else
+      redirect_to admin_users_path, notice: "#{@user.name}を削除できませんでした"
+    end
   end
 
   private
