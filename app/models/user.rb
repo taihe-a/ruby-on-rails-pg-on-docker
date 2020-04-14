@@ -6,9 +6,7 @@ class User < ApplicationRecord
   private
 
   def must_not_last_one_user
-    #　adminユーザーが一人のみ、かつ削除しているuserがadminユーザーの場合削除できない
-    if User.where("admin = true").count == 1 && self.admin?
-      throw(:abort)
-    end
+    # 　adminユーザーが一人のみ、かつ削除しているuserがadminユーザーの場合削除できない
+    throw(:abort) if User.where('admin = true').count == 1 && admin?
   end
 end
