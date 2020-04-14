@@ -1,29 +1,30 @@
 module ErrorHandlers
-	extend ActiveSupport::Concern
+  extend ActiveSupport::Concern
 
-	class Forbidden < ActionController::ActionControllerError
+  class Forbidden < ActionController::ActionControllerError
   end
 
-	included do
-		rescue_from Exception, with: :rescue500
-		rescue_from Forbidden, with: :rescue403
-		rescue_from ActionController::RoutingError, with: :rescue404
-		rescue_from ActiveRecord::RecordNotFound, with: :rescue404
-	end
+  included do
+    rescue_from Exception, with: :rescue500
+    rescue_from Forbidden, with: :rescue403
+    rescue_from ActionController::RoutingError, with: :rescue404
+    rescue_from ActiveRecord::RecordNotFound, with: :rescue404
+  end
 
-	private
-	def rescue403(e)
-		@exception = e
-		render 'errors/403', status: 403
-	end
+  private
 
-	def rescue404(e)
-		@exception = e
-		render 'errors/404', status: 404
-	end
+  def rescue403(error)
+    @exception = error
+    render 'errors/403', status: :forbidden
+  end
 
-	def rescue500(e)
-		@exception = e
-		render '/errors/500', status: 500
-	end
+  def rescue404(error)
+    @exception = error
+    render 'errors/404', status: :not_found
+  end
+
+  def rescue500(error)
+    @exception = error
+    render '/errors/500', status: :internal_server_error
+  end
 end
