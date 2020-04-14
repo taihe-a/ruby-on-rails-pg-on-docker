@@ -1,8 +1,8 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_target_user, only: %i[show edit update destroy]
+  before_action :set_target_user, only: %i[edit update destroy]
 
   def index
-    @users = User.all
+    @users = User.preload(:tasks)
   end
 
   def new
@@ -16,6 +16,10 @@ class Admin::UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @user = User.preload(:tasks).find(params[:id])
   end
 
   def update
