@@ -25,6 +25,12 @@
             <th>優先度</th>
             <td><%= @task.priority_i18n %></td>
         </tr>
+        <tr>
+            <th>ラベル</th>
+            <td><% @task.labels.each do |label| %>
+                            <%= label.name %>
+                                <% end %></td>
+        </tr>
   </tbody>  
 </table>
 <%= link_to'編集',edit_task_path,class:"btn btn-white"%>
