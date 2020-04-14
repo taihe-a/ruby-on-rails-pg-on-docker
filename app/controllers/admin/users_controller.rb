@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_target_user, only: %i[show edit update destroy]
 
   def index
-    @user = User.all.includes(:tasks)
+    @users = User.preload(:tasks)
   end
 
   def new
@@ -19,7 +19,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:tasks).find(params[:id])
+    @user = User.preload(:tasks).find(params[:id])
   end
 
   def update
