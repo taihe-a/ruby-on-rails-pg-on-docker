@@ -52,7 +52,11 @@ class TasksController < ApplicationController
   end
 
   def search
-    @task = Task.joins(:labels).where(labels: { id: params[:search][:label_id] }).where(user_id: current_user).search(params[:search]).page(params[:page])
+    @task = Task.joins(:labels)
+                .where(labels: { id: params[:search][:label_id] })
+                .where(user_id: current_user)
+                .search(params[:search])
+                .page(params[:page])
     render 'index'
   end
 

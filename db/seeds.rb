@@ -18,15 +18,6 @@ if Rails.env.development?
   end
 end
 
-Label.create(
-  name: 'Ruby'
-)
-Label.create(
-  name: 'Javascript'
-)
-Label.create(
-  name: 'PHP'
-)
-Label.create(
-  name: 'その他'
-)
+['Ruby', 'PHP', 'Javascript','その他'].each do |lang|
+  Label.create(name: lang)
+end
