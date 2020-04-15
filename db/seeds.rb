@@ -19,14 +19,14 @@ if Rails.env.development?
 end
 
 Label.create(
-  name: "Ruby",
+  name: 'Ruby'
 )
 Label.create(
-  name: "Javascript",
+  name: 'Javascript'
 )
 Label.create(
-  name: "PHP",
+  name: 'PHP'
 )
 Label.create(
-  name: "その他",
+  name: 'その他'
 )
