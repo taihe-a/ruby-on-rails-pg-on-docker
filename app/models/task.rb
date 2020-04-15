@@ -16,7 +16,7 @@ class Task < ApplicationRecord
       .priority_is(search[:priority])
   }
 
-  scope :name_like, ->(name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :name_like, ->(name) { where('tasks.name LIKE ?', "%#{name}%") if name.present? }
   scope :progress_is, ->(progress) { where(progress: progress) if progress.present? }
   scope :priority_is, ->(priority) { where(priority: priority) if priority.present? }
 end

@@ -2,7 +2,7 @@
 
 class TasksController < ApplicationController
   def index
-    @task = if params[:direction] == 'DESC'
+    @tasks = if params[:direction] == 'DESC'
               Task.page(params[:page]).per(15).preload(:labels).where(user_id: current_user).order(deadline: 'DESC')
             else
               Task.page(params[:page]).per(15).preload(:labels).where(user_id: current_user.id).order(deadline: 'ASC')
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
   end
 
   def search
-    @task = Task.search(params[:search]).page(params[:page]).where(user_id: current_user.id)
+    @tasks = Task.joins(:labels).where(labels: { id: params[:search][:label_id] }).where(user_id: current_user).search(params[:search]).page(params[:page])
     render 'index'
   end
 
