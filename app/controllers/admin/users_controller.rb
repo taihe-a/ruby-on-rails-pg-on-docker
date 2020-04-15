@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :set_target_user, only: %i[edit update destroy]
+  before_action :admin_user!
 
   def index
     @users = User.preload(:tasks)
@@ -40,5 +41,9 @@ class Admin::UsersController < ApplicationController
 
   def set_target_user
     @user = User.find(params[:id])
+  end
+
+  def admin_user!
+    raise Forbidden unless current_user.admin?
   end
 end
