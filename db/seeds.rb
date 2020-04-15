@@ -17,16 +17,3 @@ if Rails.env.development?
     )
   end
 end
-
-Label.create(
-  name: 'Ruby'
-)
-Label.create(
-  name: 'Javascript'
-)
-Label.create(
-  name: 'PHP'
-)
-Label.create(
-  name: 'その他'
-)
