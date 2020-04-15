@@ -4,7 +4,7 @@
 <p>ID：<%= session[:user_id] %></p>
   </div>
 <table class="table">
-  <tbody>
+    <tbody>
         <tr>
             <th>タイトル</th>
             <td><%= @task.name %></td>
@@ -25,7 +25,11 @@
             <th>優先度</th>
             <td><%= @task.priority_i18n %></td>
         </tr>
-  </tbody>  
+        <tr>
+            <th>ラベル</th>
+            <td><% @task.labels.each do |label| %><%= label.name %><% end %></td>
+        </tr>
+    </tbody>  
 </table>
 <%= link_to'編集',edit_task_path,class:"btn btn-white"%>
 <%= link_to'削除',task_path(@task.id),method: :delete,data:{confirm: "本当に削除しますか？"},class:"btn btn-danger"%>

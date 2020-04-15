@@ -17,3 +17,7 @@ if Rails.env.development?
     )
   end
 end
+
+['Ruby', 'PHP', 'Javascript','その他'].each do |lang|
+  Label.create(name: lang)
+end

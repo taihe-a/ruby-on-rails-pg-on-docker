@@ -3,9 +3,17 @@
 class TasksController < ApplicationController
   def index
     @task = if params[:direction] == 'DESC'
-              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'DESC')
+              Task.preload(:labels)
+                  .page(params[:page])
+                  .per(15)
+                  .where(user_id: current_user)
+                  .order(deadline: 'DESC')
             else
-              Task.page(params[:page]).per(15).where(user_id: current_user).order(deadline: 'ASC')
+              Task.preload(:labels)
+                  .page(params[:page])
+                  .per(15)
+                  .where(user_id: current_user)
+                  .order(deadline: 'ASC')
             end
   end
 
@@ -44,13 +52,17 @@ class TasksController < ApplicationController
   end
 
   def search
-    @task = Task.search(params[:search]).page(params[:page])
+    @task = Task.joins(:labels)
+                .where(labels: { id: params[:search][:label_id] })
+                .where(user_id: current_user)
+                .search(params[:search])
+                .page(params[:page])
     render 'index'
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :deadline, :progress, :priority)
+    params.require(:task).permit(:name, :detail, :deadline, :progress, :priority, { label_ids: [] })
   end
 end

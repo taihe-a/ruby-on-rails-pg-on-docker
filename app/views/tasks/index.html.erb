@@ -19,11 +19,14 @@
             <%= f.label :priority %>
             <%= f.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}, { include_blank: true} %>
         </div>
+        <div class="field">
+            <%= f.label :label %>
+            <%= f.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
+        </div>
         <div class="actions">
             <%= f.submit :search%>
         </div>
         <% end %>
-
 <%= link_to "タスク登録", new_task_path, class:"btn btn-primary"%>
 <%= link_to "ログイン", login_path, class:"btn btn-info"%>
 <%= link_to'ログアウト',logout_path,method: :delete,data:{confirm: "ログアウトしますか？"},class:"btn btn-danger"%>
@@ -51,6 +54,7 @@
                 <th>優先度</th>
                 <th>詳細</th>
                 <th>u_id</th>
+                <th>ラベル</th>
             </tr>
         </thead>
         <tbody>
@@ -64,6 +68,7 @@
                         <td><%= tasks.priority_i18n %></td>
                         <td><%= link_to "詳細", task_path(tasks.id), class:"btn btn-success"%></td>
                         <td><%= tasks.user_id %></td>
+                        <td><% tasks.labels.each do |label| %><%= label.name %><% end %></td>
                     </tr>
             <% end %>
         </tbody>
