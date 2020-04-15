@@ -6,7 +6,7 @@ class User < ApplicationRecord
   private
 
   min_admin_user = 1
-  scope :admin_user, -> { where('admin = true').count <= min_admin_user}
+  scope :admin_user, -> { where('admin = true').count <= min_admin_user }
 
   def last_admin_user!
     # 　adminユーザーが一人のみ、かつ削除しているuserがadminユーザーの場合削除できない
