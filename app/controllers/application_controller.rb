@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
   class Forbidden < ActionController::ActionControllerError
   end
 
-    rescue_from Exception, with: :internal_server_error
-    rescue_from Forbidden, with: :forbidden
-    rescue_from ActionController::RoutingError, with: :not_found
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from Exception, with: :internal_server_error
+  rescue_from Forbidden, with: :forbidden
+  rescue_from ActionController::RoutingError, with: :not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   private
 
