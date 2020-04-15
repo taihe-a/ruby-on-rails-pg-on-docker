@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @task = if params[:direction] == 'DESC'
               Task.page(params[:page]).per(15).preload(:labels).where(user_id: current_user).order(deadline: 'DESC')
             else
-              Task.page(params[:page]).per(15).preload(:labels).where(user_id: current_user.id).order(deadline: 'ASC')
+              Task.page(params[:page]).per(15).preload(:labels).where(user_id: current_user).order(deadline: 'ASC')
             end
   end
 
