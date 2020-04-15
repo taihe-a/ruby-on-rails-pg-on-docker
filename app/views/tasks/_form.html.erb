@@ -26,7 +26,7 @@
 		<%= f.radio_button :priority, :LOW %>
   </div>
   <div class="field">
-	<%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+    <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
   </div>
   <div class="form-group">
 		<%= f.label :deadline %>

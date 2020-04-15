@@ -27,7 +27,6 @@
             <%= f.submit :search%>
         </div>
         <% end %>
-
 <%= link_to "タスク登録", new_task_path, class:"btn btn-primary"%>
 <%= link_to "ログイン", login_path, class:"btn btn-info"%>
 <%= link_to'ログアウト',logout_path,method: :delete,data:{confirm: "ログアウトしますか？"},class:"btn btn-danger"%>
@@ -69,9 +68,7 @@
                         <td><%= tasks.priority_i18n %></td>
                         <td><%= link_to "詳細", task_path(tasks.id), class:"btn btn-success"%></td>
                         <td><%= tasks.user_id %></td>
-                        <td><% tasks.labels.each do |label| %>
-                            <%= label.name %>
-                                <% end %></td>
+                        <td><% tasks.labels.each do |label| %><%= label.name %><% end %></td>
                     </tr>
             <% end %>
         </tbody>
