@@ -1,12 +1,15 @@
 class User < ApplicationRecord
-  before_destroy :must_not_last_one_user
+  before_destroy :last_admin_user!
   has_secure_password
   has_many :tasks, dependent: :destroy
 
   private
 
-  def must_not_last_one_user
+  min_admin_user = 1
+  scope :admin_user, -> { where('admin = true').count <= min_admin_user}
+
+  def last_admin_user!
     # 　adminユーザーが一人のみ、かつ削除しているuserがadminユーザーの場合削除できない
-    throw(:abort) if User.where('admin = true').count == 1 && admin?
+    throw(:abort) if User.admin_user && admin?
   end
 end
