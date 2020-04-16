@@ -21,3 +21,10 @@ end
 ['Ruby', 'PHP', 'Javascript','その他'].each do |lang|
   Label.create(name: lang)
 end
+
+User.create(
+  name: "admin",
+  email: "admin@admin",
+  password: "admin",
+  admin: true
+)
